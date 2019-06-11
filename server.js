@@ -28,8 +28,9 @@ server.use(async (ctx, next) => {
   try {
     await next();
   } catch (e) {
-    ctx.state = 500;
-    ctx.body = 'Internal Server Error'
+    // ctx.state = 500;
+    // ctx.body = 'Internal Server Error'
+    ctx.throw(500,'Internal Server Error')
   }
 })
 
