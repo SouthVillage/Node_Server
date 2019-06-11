@@ -4,6 +4,8 @@ const static = require('./routers/static')
 const body = require('koa-better-body')
 const path = require('path')
 const fs = require('fs')
+const ejs = require('koa-ejs')
+
 
 
 
@@ -19,6 +21,15 @@ server.use(body({
 
 //数据库
 server.context.db = require('./Libs/mysql')
+
+//生成ejs模板
+ejs(server,{
+  root:path.resolve(__dirname,'template'),
+  layout:false,
+  debug:false,
+  viewExt:'ejs',
+  cache:false
+})
 
 //生成key
 server.keys = fs.readFileSync('./keys').toString().split('\n')
@@ -41,8 +52,8 @@ let router = new Router();
 
 router.use('/admin', require('./routers/admin/admin'));
 
+
+
+
 static(router)
-
-
-
 server.use(router.routes());

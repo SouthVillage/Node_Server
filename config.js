@@ -4,6 +4,7 @@ module.exports = {
     db_user: 'root',
     db_password: '123456',
     db_port: '3306',
-    db_database: 'node_red'
-  
+    db_database: 'node_red',
+
+    md5_keys:'djskandkjnsakjndkjas'
 }
